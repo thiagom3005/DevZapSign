@@ -1,0 +1,35 @@
+<header class="header">
+    <div class="container d-flex align-items-center justify-content-between">
+        <a class="navbar-brand" href="#">
+            <img src="https://zapsign.com.br/hubfs/LOGO-ZAPSIGN%5B1%5D.svg" alt="LOGO-ZAPSIGN[1]" loading="lazy"
+                width="160" height="160">
+        </a>
+        <nav>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/companies" routerLinkActive="active">Empresas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/users" routerLinkActive="active">Usuários</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/docs" routerLinkActive="active">Documentos</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Conteúdo Principal -->
+<main class="main-content">
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
+</main>
+
+<!-- Rodapé -->
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2024 Sua Empresa. Todos os direitos reservados.</p>
+    </div>
+</footer>

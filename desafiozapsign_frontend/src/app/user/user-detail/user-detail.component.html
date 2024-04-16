@@ -1,0 +1,40 @@
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Detalhes do Usuário</h2>
+                    <div *ngIf="user">
+                        <p><strong>Email:</strong> {{ user.email }}</p>
+                        <p><strong>Data da Última Redefinição de Senha:</strong> {{ user.last_password_definition_at |
+                            date }}</p>
+                        <p><strong>Email Verificado:</strong> {{ user.email_verified ? 'Sim' : 'Não' }}</p>
+                        <p><strong>Senha:</strong> {{ maskPassword(user.password) }}</p>
+
+                        <strong>Empresas Associadas:</strong>
+                        <ul>
+                            <li *ngFor="let company of user.companies">
+                                {{ company.name }} - {{ company.locale }} ({{ company.lang }})
+                            </li>
+                        </ul>
+
+                        <strong>Documentos Associados:</strong>
+                        <ul>
+                            <li *ngFor="let document of user.documents">
+                                {{ document.name }} ({{ document.date_limit_to_sign | date }}) - {{ document.signed ?
+                                'Assinado' : 'Não
+                                assinado' }}
+                            </li>
+                        </ul>
+
+                        <p><strong>Empresa Principal:</strong> {{ user.primary_company?.name }}</p>
+
+                        <div class="mt-3">
+                            <button class="btn btn-outline-primary btn-sm" (click)="editUser()">Editar</button>
+                            <button class="btn btn-outline-danger btn-sm" (click)="deleteUser()">Excluir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,56 @@
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">{{ isNewDocument ? 'Novo Documento' : 'Editar Documento' }}</h2>
+                    <form (ngSubmit)="saveDocument()" #documentForm="ngForm">
+                        <div class="form-group">
+                            <label for="name">Nome do Documento:</label>
+                            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="document.name"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date_limit_to_sign">Data Limite para Assinar:</label>
+                            <input type="datetime-local" class="form-control" id="date_limit_to_sign"
+                                name="date_limit_to_sign" [(ngModel)]="document.date_limit_to_sign" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="created_by">Criado Por</label>
+                            <select class="form-control" id="created_by" name="created_by"
+                                [(ngModel)]="document.created_by">
+                                <option *ngFor="let user of availableUsers" [ngValue]="user.id">{{ user.email }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="company">Empresa Associada:</label>
+                            <select class="form-control" id="company" name="company" [(ngModel)]="document.company">
+                                <option *ngFor="let company of availableCompanies" [ngValue]="company.id">{{
+                                    company.name }}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="deleted">Deletado:</label>
+                            <input type="checkbox" class="form-check-input" id="deleted" name="deleted"
+                                [(ngModel)]="document.deleted" disabled>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="signed">Assinado:</label>
+                            <input type="checkbox" class="form-check-input" id="signed" name="signed"
+                                [(ngModel)]="document.signed" disabled>
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-primary btn-sm">{{ isNewDocument ? 'Salvar' :
+                            'Atualizar' }}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

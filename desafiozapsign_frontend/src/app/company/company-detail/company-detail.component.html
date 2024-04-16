@@ -1,0 +1,38 @@
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Detalhes da Empresa</h2>
+                    <div *ngIf="company">
+                        <p><strong>Nome:</strong> {{ company.name }}</p>
+                        <p><strong>Localização:</strong> {{ company.locale }}</p>
+                        <p><strong>Linguagem:</strong> {{ company.lang }}</p>
+                        <p><strong>Criada Por:</strong> {{ company.created_by.email }}</p>
+
+                        <strong>Usuários Associados:</strong>
+                        <ul>
+                            <li *ngFor="let user of company.users">
+                                {{ user.email }}
+                            </li>
+                        </ul>
+
+                        <strong>Documentos Associados:</strong>
+                        <ul>
+                            <li *ngFor="let document of company.docs">
+                                {{ document.name }} ({{ document.date_limit_to_sign | date }}) - {{ document.signed ?
+                                'Assinado' : 'Não
+                                assinado' }}
+                            </li>
+                        </ul>
+
+                        <div class="mt-3">
+                            <button class="btn btn-outline-primary btn-sm" (click)="editCompany()">Editar</button>
+                            <button class="btn btn-outline-danger btn-sm" (click)="deleteCompany()">Excluir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

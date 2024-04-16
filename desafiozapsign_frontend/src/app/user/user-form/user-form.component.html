@@ -1,0 +1,58 @@
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">{{ isNewUser ? 'Novo Usuário' : 'Editar Usuário' }}</h2>
+                    <form (ngSubmit)="saveUser()" #userForm="ngForm">
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="user.email"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Senha:</label>
+                            <input type="password" class="form-control" id="password" name="password"
+                                [(ngModel)]="user.password" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="last_password_definition_at">Data da Última Redefinição de Senha:</label>
+                            <input type="datetime-local" class="form-control" id="last_password_definition_at"
+                                name="last_password_definition_at" [(ngModel)]="user.last_password_definition_at"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email_verified">Email Verificado:</label>
+                            <input type="checkbox" class="form-check-input" id="email_verified" name="email_verified"
+                                [(ngModel)]="user.email_verified">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="companies">Empresas Associadas:</label>
+                            <select multiple class="form-control" id="companies" name="companies"
+                                [(ngModel)]="user.companies">
+                                <option *ngFor="let company of availableCompanies" [ngValue]="company">{{ company.name
+                                    }}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="primary_company">Empresa Principal:</label>
+                            <select class="form-control" id="primary_company" name="primary_company"
+                                [(ngModel)]="user.primary_company">
+                                <option *ngFor="let company of availableCompanies" [ngValue]="company">{{ company.name
+                                    }}</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-primary btn-sm">{{ isNewUser ? 'Salvar' :
+                            'Atualizar' }}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="container mt-4">
+    <h2>Listagem de Documentos</h2>
+
+    <ul class="list-group">
+        <li *ngFor="let doc of documents" class="list-group-item d-flex justify-content-between align-items-center">
+            {{ doc.name }}
+            <div class="btn-group" role="group">
+                <button class="btn btn-outline-success btn-sm" (click)="signDocument(doc)"
+                    [disabled]="doc.signed">Assinar</button>
+                <button class="btn btn-outline-info btn-sm" (click)="viewDocumentDetails(doc.id)">Detalhes</button>
+                <button class="btn btn-outline-primary btn-sm" (click)="editDocument(doc.id)">Editar</button>
+                <button class="btn btn-outline-danger btn-sm" (click)="deleteDocument(doc.id)">Excluir</button>
+            </div>
+        </li>
+    </ul>
+
+    <button class="btn btn-outline-primary btn-sm" (click)="createDocument()">Novo Documento</button>
+</div>
